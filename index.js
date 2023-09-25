@@ -1,12 +1,10 @@
 // create array of books
 let library = [];
 
-// create book object
-const book = new Object();
-
-// basic function
+// basic operations
 const addBook = () => {
   console.log("เพิ่มหนังสือ");
+  const book = new Object();
   book.title = prompt("ชื่อหนังสือ");
   book.author = prompt("ผู้เขียน");
   book.year = parseInt(prompt("ปีที่พิมพ์"));
