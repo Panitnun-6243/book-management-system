@@ -1,7 +1,7 @@
 // create array of books
 let library = [];
 
-// basic operations
+// create book object
 const createBook = () => {
   const book = {
     title: prompt("ชื่อหนังสือ"),
@@ -13,10 +13,12 @@ const createBook = () => {
   return book;
 };
 
+// validate book properties
 const isBookValid = (book) => {
   return book.title && book.author && !isNaN(book.year) && !isNaN(book.price);
 };
 
+// add book to library
 const addBook = () => {
   console.log("เพิ่มหนังสือ");
   const newBook = createBook();
@@ -29,6 +31,7 @@ const addBook = () => {
   }
 };
 
+// view all books in library
 const viewBooks = () => {
   console.log("ดูรายการหนังสือ");
   if (library.length === 0) {
@@ -38,6 +41,7 @@ const viewBooks = () => {
   }
 };
 
+// edit book in library
 const editBook = () => {
   console.log("แก้ไขหนังสือ");
   let index = prompt("เลือกหนังสือที่ต้องการแก้ไข (ใส่เลขลำดับ):");
@@ -66,6 +70,7 @@ const editBook = () => {
   }
 };
 
+// delete book in library
 const deleteBook = () => {
   console.log("ลบหนังสือ");
   let index = prompt("เลือกหนังสือที่ต้องการลบ (ใส่เลขลำดับ):");
@@ -84,7 +89,7 @@ const deleteBook = () => {
   }
 };
 
-// loop program
+// run main program
 const main = () => {
   while (true) {
     let choice = prompt(
