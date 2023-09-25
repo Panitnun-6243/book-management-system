@@ -1,4 +1,4 @@
-// array of books
+// create array of books
 let library = [];
 
 // create book object
@@ -9,25 +9,35 @@ const addBook = () => {
   console.log("เพิ่มหนังสือ");
   book.title = prompt("ชื่อหนังสือ");
   book.author = prompt("ผู้เขียน");
-  book.year = prompt("ปีที่พิมพ์");
-  book.price = prompt("ราคา");
-  library.push(book);
+  book.year = parseInt(prompt("ปีที่พิมพ์"));
+  book.price = parseFloat(prompt("ราคา"));
+
+  if (book.title && book.author && !isNaN(book.year) && !isNaN(book.price)) {
+    library.push(book);
+    alert("เพิ่มหนังสือเรียบร้อยแล้ว");
+  } else {
+    alert("กรุณากรอกข้อมูลให้ถูกต้อง");
+  }
 };
 
 const viewBooks = () => {
   console.log("ดูรายการหนังสือ");
-  alert("รายการหนังสือ:\n\n" + JSON.stringify(library, null, 2));
+  if (library.length === 0) {
+    alert("ยังไม่มีหนังสือในรายการ");
+  } else {
+    alert("รายการหนังสือ:\n\n" + JSON.stringify(library, null, 2));
+  }
 };
 
 const editBook = () => {
   console.log("แก้ไขหนังสือ");
   let index = prompt("เลือกหนังสือที่ต้องการแก้ไข (ใส่เลขลำดับ):");
-  if (index >= 0 && index < books.length) {
+  if (index >= 0 && index < library.length) {
     let updatedBook = {
-      title: prompt("ชื่อหนังสือ:", books[index].title),
-      author: prompt("ผู้เขียน:", books[index].author),
-      year: prompt("ปีที่พิมพ์:", books[index].year),
-      price: prompt("ราคา:", books[index].price),
+      title: prompt("ชื่อหนังสือ:", library[index].title),
+      author: prompt("ผู้เขียน:", library[index].author),
+      year: prompt("ปีที่พิมพ์:", library[index].year),
+      price: prompt("ราคา:", library[index].price),
     };
 
     // check if all fields are filled
@@ -40,7 +50,7 @@ const editBook = () => {
       library[index] = updatedBook;
       alert("แก้ไขหนังสือเรียบร้อยแล้ว");
     } else {
-      alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+      alert("กรุณากรอกข้อมูลให้ถูกต้อง");
     }
   } else {
     alert("เลขลำดับไม่ถูกต้อง");
