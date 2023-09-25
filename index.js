@@ -2,16 +2,27 @@
 let library = [];
 
 // basic operations
+const createBook = () => {
+  const book = {
+    title: prompt("ชื่อหนังสือ"),
+    author: prompt("ผู้เขียน"),
+    year: parseInt(prompt("ปีที่พิมพ์")),
+    price: parseFloat(prompt("ราคา")),
+  };
+
+  return book;
+};
+
+const isBookValid = (book) => {
+  return book.title && book.author && !isNaN(book.year) && !isNaN(book.price);
+};
+
 const addBook = () => {
   console.log("เพิ่มหนังสือ");
-  const book = new Object();
-  book.title = prompt("ชื่อหนังสือ");
-  book.author = prompt("ผู้เขียน");
-  book.year = parseInt(prompt("ปีที่พิมพ์"));
-  book.price = parseFloat(prompt("ราคา"));
+  const newBook = createBook();
 
-  if (book.title && book.author && !isNaN(book.year) && !isNaN(book.price)) {
-    library.push(book);
+  if (isBookValid(newBook)) {
+    library.push(newBook);
     alert("เพิ่มหนังสือเรียบร้อยแล้ว");
   } else {
     alert("กรุณากรอกข้อมูลให้ถูกต้อง");
@@ -73,6 +84,7 @@ const deleteBook = () => {
   }
 };
 
+// loop program
 const main = () => {
   while (true) {
     let choice = prompt(
